@@ -31,6 +31,11 @@ public class MapManager : MonoBehaviour
         return map.GetGrid();
     }
 
+    public Vector2 GetSize()
+    {
+        return mapSize;
+    }
+
 
     //Gizmos
     private void OnDrawGizmos()

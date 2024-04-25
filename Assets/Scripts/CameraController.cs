@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     private float zoom;
 
     [Header("Camera Settings")]
+    [SerializeField] private float startingZoom;
     [SerializeField] private float cameraSpeed;
     [SerializeField] private float maxCameraZoom;
     [SerializeField] private float minCameraZoom;
@@ -22,6 +23,9 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         defaultSpeed = cameraSpeed;
+        zoom = startingZoom;
+
+        SetCameraPosition();
     }
 
     private void Update()
@@ -55,5 +59,11 @@ public class CameraController : MonoBehaviour
         Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, zoom, ref yVelocity, zoomSmoothTimer);
 
         lastFramePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    public void SetCameraPosition()
+    {
+        Vector2 mapSize = MapManager.instance.GetSize();
+        transform.localPosition = new Vector3(mapSize.x / 2, mapSize.y / 2, -10);
     }
 }
