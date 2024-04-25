@@ -42,7 +42,7 @@ public class Grid
         {
             if (tiles[x, y] != null) return tiles[x, y];
         }
-        catch (Exception e)
+        catch (Exception)
         {
             return null;
         }
