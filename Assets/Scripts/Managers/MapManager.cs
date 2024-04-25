@@ -4,7 +4,11 @@ public class MapManager : MonoBehaviour
 {
     public static MapManager instance;
     [Header("Map Settings")]
+    [SerializeField] private bool drawGizmosGrid;
     [SerializeField] private Vector2Int mapSize;
+
+    [Header("References")]
+    [SerializeField] private Transform gridVisuals;
 
     private Map map;
 
@@ -12,6 +16,8 @@ public class MapManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         map = new Map(mapSize);
+
+        gridVisuals.localScale = (Vector2)mapSize;
     }
 
     //Getter-Setter
@@ -29,12 +35,15 @@ public class MapManager : MonoBehaviour
     //Gizmos
     private void OnDrawGizmos()
     {
-        for (int i = 0; i < mapSize.x; i++)
+        if (drawGizmosGrid)
         {
-            for (int j = 0; j < mapSize.y; j++)
+            for (int i = 0; i < mapSize.x; i++)
             {
-                Rect rect = new Rect(i, j, 1, 1);
-                Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
+                for (int j = 0; j < mapSize.y; j++)
+                {
+                    Rect rect = new Rect(i, j, 1, 1);
+                    Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
+                }
             }
         }
     }
