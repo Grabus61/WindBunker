@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class MapManager : MonoBehaviour
 {
     public static MapManager instance;
@@ -35,7 +36,6 @@ public class MapManager : MonoBehaviour
     {
         return mapSize;
     }
-
 
     //Gizmos
     private void OnDrawGizmos()
