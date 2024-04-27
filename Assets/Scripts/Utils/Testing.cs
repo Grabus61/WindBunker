@@ -1,11 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Testing : MonoBehaviour
 {
-    private void Start()
+    public GameObject obj;
+    public void Start()
     {
+        for (int i = 0; i < 5000; i++)
+        {
+            StartCoroutine(SpawnObj());
+        }
+    }
 
+    IEnumerator SpawnObj()
+    {
+        Instantiate(obj);
+        yield return null;
     }
 }

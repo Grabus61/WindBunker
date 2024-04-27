@@ -17,8 +17,8 @@ public class MapTile
     public MapTile(Grid grid, Vector2Int position)
     {
         this.grid = grid;
-        this.x = position.x;
-        this.y = position.y;
+        x = position.x;
+        y = position.y;
     }
 
     //Pathfinding methods

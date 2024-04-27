@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
         Vector2 currentFramePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         //Mouse Controls
-        if (Input.GetMouseButton(1) || Input.GetMouseButton(2))
+        if (Input.GetMouseButton(2))
         {
             Vector2 diff = lastFramePosition - currentFramePosition;
             Camera.main.transform.Translate(diff);
